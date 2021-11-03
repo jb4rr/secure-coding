@@ -2,29 +2,30 @@
 <html>
   <link rel="stylesheet" href="../css/styles.css">
   <head>
+    <meta charset="utf-8">
     <script
-              src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-              crossorigin="anonymous">
-          </script>
-          <meta charset="utf-8">
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous">
+    </script>
+
   </head>
   <div class="form_wrapper">
     <form id="userLogin">
       <div class="imgcontainer">
         <img src="../images/login-avatar.png" alt="Avatar" class="avatar">
       </div>
-
       <div class="container">
-        <label for="uname"><b>Email</b></label>
+        <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" required>
-
-        <label for="psw"><b>Password</b></label>
+        <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" required>
-
         <button type="submit">Login</button>
+        <div class="g-recaptcha" data-sitekey="6LcHXREdAAAAAKmZEIbSUZOK4R5vT3Uh44Wcc7lX"></div>
         <label>Haven't got an account? <a href="../registerPage/register.html">Register<href><br></label>
       </div>
     </form>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="./login.js"></script>
   </div>
 </html>
