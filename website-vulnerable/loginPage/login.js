@@ -22,7 +22,7 @@ $('#userLogin').submit(function(event){
 					lastName = dataJson['lastname'];
 					sessionStorage.setItem('firstName', firstName);
 					sessionStorage.setItem('lastName', lastName);
-                                        $_SESSION['loggedin'] = true;
+
 					window.location="../homePage/home.html";
 				}
 		    },

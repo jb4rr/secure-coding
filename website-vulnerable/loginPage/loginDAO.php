@@ -2,9 +2,7 @@
 require_once '../common/config.php';
 
 if(isset($_POST['phpFunction'])) {
-    /*if($_POST['phpFunction'] == 'checkLogin') {
-        checkLogin();
-    } else*/if($_POST['phpFunction'] == 'login') {
+    if($_POST['phpFunction'] == 'login') {
         login();
     }
 }
@@ -24,7 +22,6 @@ function login() {
 	$row=mysqli_fetch_assoc($res);
 	if( $num_row == 1 ) {
 		echo json_encode($row);
-		$_SESSION['email'] = $email;
 	}
 	else {
 		echo 'false';
