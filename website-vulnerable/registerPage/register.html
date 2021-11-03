@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+        </script>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/styles.css">
+    </head>
+
+    <div class="form_wrapper">
+      <div id="divMessage"></div>
+      <form id="register_form">
+        <div class="imgcontainer">
+          <img src="../images/login-avatar.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="firstname"><b>First Name</b></label>
+            <input type="text" placeholder="First Name" name="firstname" required>
+
+            <label for="lastname"><b>Last Name</b></label>
+            <input type="text" placeholder="Last Name" name="lastname" required>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <button type="submit">Register</button>
+        </div>
+      </form>
+        <script src="./register.js"></script>
+    </div>
+</html>
