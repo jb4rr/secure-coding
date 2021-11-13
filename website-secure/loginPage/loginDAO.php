@@ -10,6 +10,7 @@ if(isset($_POST['phpFunction'])) {
 }
 
 function login() {
+    include '../common/config.php';
 	$email = $_POST['email'];
 	$pWord = md5($_POST['password']);
 	$token = $_POST["g-recaptcha-response"];
@@ -19,15 +20,14 @@ function login() {
     $request = file_get_contents($url);
     $response = json_decode($request);
     if($response->success) {
+        if (!($st = $con->prepare("SELECT `firstname`, `lastname` FROM `users` WHERE email = :email AND password = :pword"))) {
+            die( "Can't prepare the statement :(" );
+        }
+        $st->execute([ ':email' => $email, ':pword' => $pWord ] );
 
-        $sql = "SELECT `firstname`, `lastname` FROM `users` WHERE email='".$email."' AND password='".$pWord."'";
+        $res = $st->fetch(PDO::FETCH_ASSOC);
 
-        include '../common/config.php';
-
-        $res = mysqli_query($con, $sql);
-        $num_row = mysqli_num_rows($res);
-        $row=mysqli_fetch_assoc($res);
-        if( $num_row == 1 ) {
+        if($res) {
             echo json_encode($row);
         }
         else {
