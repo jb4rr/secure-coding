@@ -1,6 +1,5 @@
 <?php
     if($_POST['phpfunction'] == 'createUser') {
-
 		createUser();
 	}
 
@@ -14,28 +13,22 @@
 
         include "../common/config.php";
 
-        $sql = "SELECT * FROM `users` WHERE email='$email'";
+        if (!($st = $con->prepare("SELECT * FROM `users` WHERE email = :email"))) {
+                die( "Can't prepare the statement :(" );
+            }
+        $st->execute([ ':email' => $email]);
+        $res = $st->fetch(PDO::FETCH_ASSOC);
 
-        $query = mysqli_query($con, $sql);
-
-        if(mysqli_num_rows($query) > 0){
+        if($res) {
             echo "This email already registered.";
             return;
+        } else {
+            if (($st = $con->prepare("INSERT INTO `users` values (:firstname,:lastname,:email,:pass,:id, NOW())"))) {
+                $st->execute([':firstname' => $firstname,':lastname' => $lastname, ':email' => $email, ':pass' => $pass, ':id' => $id]);
+                echo "Success Registered"
+            } else {
+                echo "error";
+            }
         }
-
-        $sql = "INSERT INTO `users`".
-               " values ".
-               "('$firstname', '$lastname', '$email', '$pass', '$id', NOW())";
-
-        if(mysqli_query($con, $sql)) {
-			echo "true";
-		} else {
-			echo mysqli_error($con);
-			return;
-		}
-
-		//sendEmail($email, $verificationcode);
-
-		mysqli_close($con);
 	};
 ?>

@@ -9,6 +9,7 @@ $('#register_form').submit(function(event){
             url: "registerDAO.php",
             data: formData+"&phpfunction=createUser",
             success: function(echoedMsg){
+                alert(echoedMsg)
                 if ($.trim(echoedMsg)==='true') {
                     window.location="../loginPage/login.html";
                 };
