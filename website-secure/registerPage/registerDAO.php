@@ -25,7 +25,7 @@
         } else {
             if (($st = $con->prepare("INSERT INTO `users` values (:firstname,:lastname,:email,:pass,:id, NOW())"))) {
                 $st->execute([':firstname' => $firstname,':lastname' => $lastname, ':email' => $email, ':pass' => $pass, ':id' => $id]);
-                echo "Success Registered"
+                echo "Success Registered";
             } else {
                 echo "error";
             }

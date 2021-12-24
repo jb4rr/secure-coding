@@ -14,7 +14,6 @@ $('#userLogin').submit(function(event){
           } else if($.trim(data)=='unauthorized') {
               alert("Unauthorized Captcha")
           } else {
-              alert(data)
               dataJson = JSON.parse(data);
               firstName = dataJson['firstname'];
               lastName = dataJson['lastname'];

@@ -26,7 +26,7 @@
             $res = $st->fetch(PDO::FETCH_ASSOC);
 
             if($res) {
-                echo json_encode($row);
+                echo json_encode($res);
             }
             else {
                 // Incorrect Username and Password

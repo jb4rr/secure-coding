@@ -12,7 +12,9 @@
     var loggedIn = sessionStorage.getItem('firstName')
     document.getElementById("success").innerText = loggedIn
     if ( loggedIn ) {
-        document.getElementById("success").innerText = 'Successfully Logged In'
+        firstname = sessionStorage.getItem("firstName")
+        lastname = sessionStorage.getItem("lastName")
+        document.getElementById("success").innerText = 'Welcome ' + firstname + ' ' + lastname
     } else {
         window.location.href = "../loginPage/login.html"
     };

@@ -11,7 +11,8 @@ $('#register_form').submit(function(event){
             success: function(echoedMsg){
                 alert(echoedMsg)
                 if ($.trim(echoedMsg)==='true') {
-                    window.location="../loginPage/login.html";
+                    window.location.href="../loginPage/login.html";
+
                 };
 
             },

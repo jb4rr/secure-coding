@@ -1,22 +1,49 @@
 <html>
   <head>
+      <link rel="stylesheet" href="../css/styles.css">
     <script
               src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
               crossorigin="anonymous">
           </script>
           <meta charset="utf-8">
   </head>
-  <div id="success"></div>
 
-<script>
-    var loggedIn = sessionStorage.getItem('firstName')
-    document.getElementById("success").innerText = loggedIn
-    if ( loggedIn ) {
-        document.getElementById("success").innerText = 'Successfully Logged In'
-    } else {
-        window.location.href = "../loginPage/login.html"
-    };
-</script>
+  <body>
+    <div class="form_wrapper">
+      <div id="divMessage"></div>
+      <form id="message_form">
+        <div id="welcome-message" style="text-align: center;"></div>
+        <div class="container">
+            <input type="text" placeholder="Type Message Here" name="message" id="message" style=" height: 100px; width:100%" required>
+            <button type="submit">Post</button>
+        </div>
+      </form>
+        <div id="post_wrapper" style="text-align: center;">
+            <script type = "text/javascript">
+                load_posts()
+                function load_posts() {
+                    $.ajax({
+                        type: "POST",
+                        url: "homeDAO.php",
 
+                        data: "phpfunction=load_posts",
+                        datatype: 'json',
+                        success: function(data){
+                            if($.trim(data)=='false') {
+                                alert("Wrong Username or Password");
+                            }
+                            else {
 
+                                document.getElementById("post_wrapper").innerHTML = data;
+                            }
+                        },
+                    });
+                        //return false;
+                }
+
+            </script>
+        </div>
+    </div>
+  </body>
+<script src="./home.js"></script>
 </html>
